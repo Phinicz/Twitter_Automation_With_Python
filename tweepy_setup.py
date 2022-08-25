@@ -2,7 +2,7 @@ from unicodedata import name
 import tweepy
 import time
 import random 
-# import pandas
+
 
 # Credentials
 api_key = ""
@@ -34,13 +34,13 @@ def search_users(keyword):
             user_followers.append(user.followers_count)
             user_following.append(user.friends_count)
     return names,usernames,user_id,user_description,user_followers,user_following
-users = search_users("NFT project")
-with open('''NFT Collection.txt''',"r") as t:
+users = search_users("your sesrch keyowrd")
+with open('''file name of people you DONT want to send DM to''',"r") as t:
     f = [i for i in t.read().splitlines()]
-    for i in range(375,len(users[1])-1):
+    for i in range(0,len(users[1])-1):
         if users[1][i] not in f:
             try:
-                time.sleep(random.randint(90,110))
+                time.sleep(random.randint(90,110)) #random sleep time 
                 mytext = "Write your messages Here'"
                 api.send_direct_message(recipient_id=users[2][i],text= mytext)
                 print(f"{i}- sent a DM to {users[1][i]}")
